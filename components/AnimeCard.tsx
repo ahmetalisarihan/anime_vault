@@ -1,4 +1,6 @@
+'use client';
 import Image from "next/image";
+
 
 export interface AnimeProp {
   id: string;
@@ -18,6 +20,7 @@ interface Prop {
 }
 
 function AnimeCard({ anime }: Prop) {
+ 
   return (
     <div className="max-w-sm rounded relative w-full">
       <div className="relative w-full h-[37vh]">

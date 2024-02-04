@@ -1,4 +1,4 @@
-"use server";
+
 
 export const fetchAnime = async (page: number) => {
   const response = await fetch(
