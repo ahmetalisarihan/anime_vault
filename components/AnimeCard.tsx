@@ -1,5 +1,7 @@
 'use client';
 import Image from "next/image";
+import { MotionDiv } from "./MotionDiv";
+
 
 
 export interface AnimeProp {
@@ -19,10 +21,29 @@ interface Prop {
   index: number;
 }
 
-function AnimeCard({ anime }: Prop) {
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
+};
+
+
+function AnimeCard({ anime, index }: Prop) {
  
   return (
-    <div className="max-w-sm rounded relative w-full">
+    
+    <MotionDiv
+    variants={variants}
+    initial="hidden"
+    animate="visible"
+    transition={
+      {delay:index*0.25,
+      ease:'easeInOut',
+      duration:0.5
+
+      }
+    }
+    viewport={{amount:0}}
+    className="max-w-sm rounded relative w-full">
       <div className="relative w-full h-[37vh]">
         <Image
           src={`https://shikimori.one${anime.image.original}`}
@@ -67,8 +88,10 @@ function AnimeCard({ anime }: Prop) {
           </div>
         </div>
       </div>
-    </div>
+    </MotionDiv>
+    
   );
+  
 }
 
 export default AnimeCard;
